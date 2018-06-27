@@ -17,12 +17,18 @@ myApp.controller('mainController', ['$scope', '$filter', '$timeout', function ($
     $scope.characters = 5
 
     $scope.rules = [
-        {ruleName: 'Must be 5 characters'},
-        {ruleName: 'Must not be used elsewhere'},
-        {ruleName: 'Must be cool'}
+        { ruleName: 'Must be 5 characters' },
+        { ruleName: 'Must not be used elsewhere' },
+        { ruleName: 'Must be cool' }
     ]
 
-console.log($scope.rules)
+
+    $scope.alertClick = function () {
+        console.log('klik')
+        alert('Clicked alert')
+    }
+
+    $scope.name = 'Tomek'
 
 }])
 

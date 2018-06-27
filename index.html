@@ -23,14 +23,12 @@
 </head>
 
 <body>
-
     <header>
         <nav class="navbar navbar-default">
             <div class="container">
                 <div class="navbar-header">
                     <a class="navbar-brand" href="/">AngularJS</a>
                 </div>
-
                 <ul class="nav navbar-nav navbar-right">
                     <li>
                         <a href="#">
@@ -42,37 +40,35 @@
     </header>
 
     <div class="container">
-
         <div ng-controller='mainController'>
-
             <div>
                 <label>What is your twitter handle</label>
-            <input type='text' ng-model='handle'/>
+                <input type='text' ng-model='handle' />
             </div>
-
-            <div class='alert' ng-class="{ 'alert-warning': handle.length < characters, 'alert-danger': handle.length > characters }" ng-show='handle.length !== characters'>
-
-               <div ng-show='handle.length < characters'>
-You have less than 5 characters.
-               </div>
-
-               <div ng-show='handle.length > characters'>
-You have more than 5 characters.
-
-               </div>
-
+            <div class='alert' ng-class="{ 'alert-warning': handle.length < characters, 'alert-danger': handle.length > characters }"
+                ng-show='handle.length !== characters'>
+                <div ng-show='handle.length < characters'>
+                    You have less than 5 characters.
+                </div>
+                <div ng-show='handle.length > characters'>
+                    You have more than 5 characters.
+                </div>
             </div>
+            <hr />
+            <h1>twitter.com/{{ lowerCaseHandle() }}</h1>
+            <h3>Rules:</h3>
+            <ul>
+                <li ng-repeat='rule in rules'>
+                    {{rule.ruleName}}
+                </li>
+            </ul>
+            <hr />
+            <input type='button' value='Click Me' ng-click='alertClick()' />
 
-<hr />
+            <br/> <br />
 
-<h1>twitter.com/{{ lowerCaseHandle() }}</h1>
+            <div>{{ name }}</div>
 
-<h3>Rules:</h3>
-<ul>
-    <li ng-repeat='rule in rules'>
-{{rule.ruleName}}
-    </li>
-</ul>
         </div>
 
     </div>
