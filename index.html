@@ -59,7 +59,7 @@
             <h3>Rules:</h3>
             <ul>
                 <li ng-repeat='rule in rules'>
-                    {{rule.ruleName}}
+                    {{rule.name.first}} {{rule.name.last}}
                 </li>
             </ul>
             <hr />
@@ -67,7 +67,7 @@
 
             <br/> <br />
 
-            <div>{{ name }}</div>
+            Add rule: <input type='text' ng-model='newRule' /> <a href='#' class='btn btn-default' ng-click='addRule()'>ADD</a>
 
         </div>
 
