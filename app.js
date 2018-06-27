@@ -1,11 +1,14 @@
 var myApp = angular.module('myApp', ['ngMessages', 'ngResource', 'ngRoute'])
 
 myApp.config(function ($routeProvider) {
-
     $routeProvider
         .when('/first', {
             templateUrl: 'pages/first.html',
             controller: 'firstController'
+        })
+        .when('/second', {
+            templateUrl: 'pages/second.html',
+            controller: 'secondController'
         })
         .when('/second/:num', {
             templateUrl: 'pages/second.html',
@@ -13,25 +16,34 @@ myApp.config(function ($routeProvider) {
         })
 })
 
-myApp.controller('firstController', ['$scope', '$log', function ($scope, $log) {
+myApp.service('nameService', function () {
+
+    var self = this
+    this.name = 'Tomek Banach'
+    this.nameLength = function () {
+        return self.name.length
+    }
+})
+
+myApp.controller('firstController', ['$scope', '$log', 'nameService', function ($scope, $log, nameService) {
 
     $scope.name = 'TOMEK'
+    $scope.name = nameService.name
+    $scope.$watch('name', function () {
+        nameService.name = $scope.name
+    })
+}])
 
-}
-])
+myApp.controller('secondController', ['$scope', '$log', '$routeParams', 'nameService', function ($scope, $log, $routeParams, nameService) {
 
-myApp.controller('secondController', ['$scope', '$log', '$routeParams', function ($scope, $log, $routeParams) {
+    $scope.num = $routeParams.num || 'not defined'
+    $scope.name = nameService.name
+    $scope.$watch('name', function () {
+        nameService.name = $scope.name
+    })
+}])
 
-$scope.num = $routeParams.num
-
-}
-])
-
-
-
-
-
-myApp.controller('mainController', ['$scope', '$filter', '$timeout', '$http', function ($scope, $filter, $timeout, $http) {
+myApp.controller('mainController', ['$scope', '$filter', '$timeout', '$http', '$log', 'nameService', function ($scope, $filter, $timeout, $http, $log, nameService) {
 
     $scope.handle = ''
 
@@ -53,13 +65,16 @@ myApp.controller('mainController', ['$scope', '$filter', '$timeout', '$http', fu
         { ruleName: 'Must be cool' }
     ]
 
-
     $scope.alertClick = function () {
         console.log('klik')
         alert('Clicked alert')
     }
 
-    $scope.name = 'Tomek'
+    $scope.name = nameService.name
+
+    $scope.$watch('name', function () {
+        nameService.name = $scope.name
+    })
 
     $http.get('https://randomuser.me/api/?results=5')
         .success(function (result) {
@@ -82,8 +97,10 @@ myApp.controller('mainController', ['$scope', '$filter', '$timeout', '$http', fu
             .error(function (data, status) {
                 console.log('ERROR' + data)
             })
-
     }
+
+    $log.log(nameService.name)
+    $log.log(nameService.nameLength())
 
 }])
 

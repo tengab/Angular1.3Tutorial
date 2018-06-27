@@ -49,44 +49,37 @@
     </header>
 
     <div class="container">
-            <h1>MAIN</h1>
-
-            <div ng-controller='mainController'>
-            
-                <div>
-                    <label>What is your twitter handle</label>
-                    <input type='text' ng-model='handle' />
-                </div>
-                <div class='alert' ng-class="{ 'alert-warning': handle.length < characters, 'alert-danger': handle.length > characters }"
-                    ng-show='handle.length !== characters'>
-                    <div ng-show='handle.length < characters'>
-                        You have less than 5 characters.
-                    </div>
-                    <div ng-show='handle.length > characters'>
-                        You have more than 5 characters.
-                    </div>
-                </div>
-                <hr />
-                <h1>twitter.com/{{ lowerCaseHandle() }}</h1>
-                <h3>Users:</h3>
-                <ul>
-                    <li ng-repeat='rule in rules'>
-                        {{rule.name.first}} {{rule.name.last}}
-                    </li>
-                </ul>
-                <hr />
-                <input type='button' value='Click Me' ng-click='alertClick()' />
-            
-                <br/>
-                <br /> Add rule:
-                <input type='text' ng-model='newRule' />
-                <a href='#' class='btn btn-default' ng-click='addRule()'>ADD</a>
-            
+        <div ng-controller='mainController'>
+            <div>
+                <label>What is your twitter handle</label>
+                <input type='text' ng-model='handle' />
             </div>
-            <div ng-view></div>
-        
+            <div class='alert' ng-class="{ 'alert-warning': handle.length < characters, 'alert-danger': handle.length > characters }"
+                ng-show='handle.length !== characters'>
+                <div ng-show='handle.length < characters'>
+                    You have less than 5 characters.
+                </div>
+                <div ng-show='handle.length > characters'>
+                    You have more than 5 characters.
+                </div>
+            </div>
+            <hr />
+            <h1>twitter.com/{{ lowerCaseHandle() }}</h1>
+            <h3>Users:</h3>
+            <ul>
+                <li ng-repeat='rule in rules'>
+                    {{rule.name.first}} {{rule.name.last}}
+                </li>
+            </ul>
+            <hr />
+            <input type='button' value='Click Me' ng-click='alertClick()' />
+            <br/>
+            <br /> Add rule:
+            <input type='text' ng-model='newRule' />
+            <a href='#' class='btn btn-default' ng-click='addRule()'>ADD</a>
+        </div>
+        <div ng-view></div>
     </div>
-
 </body>
 
 </html>
