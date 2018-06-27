@@ -1,4 +1,35 @@
-var myApp = angular.module('myApp', ['ngMessages', 'ngResource'])
+var myApp = angular.module('myApp', ['ngMessages', 'ngResource', 'ngRoute'])
+
+myApp.config(function ($routeProvider) {
+
+    $routeProvider
+        .when('/first', {
+            templateUrl: 'pages/first.html',
+            controller: 'firstController'
+        })
+        .when('/second/', {
+            templateUrl: 'pages/second.html',
+            controller: 'secondController'
+        })
+})
+
+myApp.controller('firstController', ['$scope', '$log', function ($scope, $log) {
+
+    $scope.name = 'TOMEK'
+
+}
+])
+
+myApp.controller('secondController', ['$scope', '$log', function ($scope, $log) {
+
+
+
+}
+])
+
+
+
+
 
 myApp.controller('mainController', ['$scope', '$filter', '$timeout', '$http', function ($scope, $filter, $timeout, $http) {
 
@@ -40,19 +71,19 @@ myApp.controller('mainController', ['$scope', '$filter', '$timeout', '$http', fu
             console.log('status ' + status)
         })
 
-        $scope.newRule = ''
-        $scope.addRule = function() {
+    $scope.newRule = ''
+    $scope.addRule = function () {
 
-            $http.post('https://tomaszbanach01-sandbox.firebaseio.com/homeworkTaskList', {name : $scope.newRule})
-            .success(function(result) {
+        $http.post('https://tomaszbanach01-sandbox.firebaseio.com/homeworkTaskList', { name: $scope.newRule })
+            .success(function (result) {
                 $scope.rules = result
                 $scope.newRule = ''  //clear textbox
             })
-            .error(function(data, status){
+            .error(function (data, status) {
                 console.log('ERROR' + data)
             })
 
-        }
+    }
 
 }])
 
