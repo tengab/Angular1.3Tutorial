@@ -70,11 +70,12 @@ myApp.directive('searchResult', function () {
             personObject: '=',
             formattedAddressFunction: '&'
         },
-        link: function (scope, elements, attrs) {
-            if (scope.personObject.name == 'Jane Doe') {
-                elements.removeAttr('class')
-            }
-        }
+        // link: function (scope, elements, attrs) {
+        //     if (scope.personObject.name == 'Jane Doe') {
+        //         elements.removeAttr('class')
+        //     }
+        // },
+        transclude: true,
     }
 })
 
