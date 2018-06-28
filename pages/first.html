@@ -1,37 +1,11 @@
-<!-- <h1>This is first page from router, {{name}} </h1>
-<hr />
-<input type='text' ng-model='name' /> -->
+<div>
+    <label>Search</label>
+    <input type='text' value='Doe' />
 
-<label>Search</label>
-<input type='text' value='Doe' />
+    <h3>Search Results</h3>
+    <div class="list-group">
 
-<h3>Search Results</h3>
-<div class="list-group">
-    As Element
-    <search-result></search-result>
-    <br/>
-    As attribute
-    <div search-result></div>
-    <br/>
-    As class
-    <div class='search-result'></div>
+        <search-result person-name="{{person.name}}" person-address='{{person.address}}'></search-result>
 
-    <!-- <a href="#" class="list-group-item">   // THIS IS REPLACED BY TEMPLATE FROM CUSTOM DIRECTIVE
-        <h4 class="list-group-item-heading">Doe, John</h4>
-        <p class="list-group-item-text">
-            555 Main St., New York
-        </p>
-    </a>
-    <a href="#" class="list-group-item">
-        <h4 class="list-group-item-heading">Doe, John</h4>
-        <p class="list-group-item-text">
-            555 Main St., New York
-        </p>
-    </a>
-    <a href="#" class="list-group-item">
-        <h4 class="list-group-item-heading">Doe, John</h4>
-        <p class="list-group-item-text">
-            555 Main St., New York
-        </p>
-    </a> -->
+    </div>
 </div>

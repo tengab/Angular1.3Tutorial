@@ -27,20 +27,23 @@ myApp.service('nameService', function () {
 
 myApp.controller('firstController', ['$scope', '$log', 'nameService', function ($scope, $log, nameService) {
 
-    // $scope.name = 'TOMEK'
-    // $scope.name = nameService.name
-    // $scope.$watch('name', function () {
-    //     nameService.name = $scope.name
-    // })
-}])
-
-myApp.directive('searchResult', function(){
-    return {
-        restrict: 'AEC', //A to show directive as attribute only, E to show directive as element only, AE both /default setting/ , C to show directive as class
-        templateUrl: 'directives/searchresult.html',
-        replace: true
+    $scope.person = {
+        name: 'John Doe',
+        address: ' 555 Main St., New York, NY'
     }
 
+}])
+
+myApp.directive('searchResult', function () {
+    return {
+        restrict: 'AE', //A to show directive as attribute only, E to show directive as element only, AE both /default setting/ , C to show directive as class
+        templateUrl: 'directives/searchresult.html',
+        replace: true,
+        scope: {
+            personName: '@',
+            personAddress: '@'
+        }
+    }
 })
 
 myApp.controller('secondController', ['$scope', '$log', '$routeParams', 'nameService', function ($scope, $log, $routeParams, nameService) {
