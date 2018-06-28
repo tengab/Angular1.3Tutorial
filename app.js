@@ -27,15 +27,33 @@ myApp.service('nameService', function () {
 
 myApp.controller('firstController', ['$scope', '$log', 'nameService', function ($scope, $log, nameService) {
 
-    $scope.person = {
-        name: 'John Doe',
-        address: ' 555 Main St.',
-        city: 'New York',
-        state: 'NY',
-        zip: '11111'
-    }
+    $scope.people = 
+        [
+            {
+                name: 'John Doe',
+                address: ' 555 Main St.',
+                city: 'New York',
+                state: 'NY',
+                zip: '11111'
+            },
+            {
+                name: 'Jane Doe',
+                address: ' 333 Second St.',
+                city: 'Buffalo',
+                state: 'NY',
+                zip: '22222'
+            },
+            {
+                name: 'Steve Doe',
+                address: ' 1234 Third St.',
+                city: 'York',
+                state: 'NY',
+                zip: '3333'
+            }
+        ]
+    
 
-    $scope.formattedAddress = function(person) {
+    $scope.formattedAddress = function (person) {
 
         return person.address + ',' + person.city + ',' + person.state + ',' + person.zip
 
