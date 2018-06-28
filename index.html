@@ -49,7 +49,7 @@
     </header>
 
     <div class="container">
-        <div ng-controller='mainController'>
+        <!-- <div ng-controller='mainController'>
             <div>
                 <label>What is your twitter handle</label>
                 <input type='text' ng-model='handle' />
@@ -68,16 +68,17 @@
             <h3>Users:</h3>
             <ul>
                 <li ng-repeat='rule in rules'>
-                    {{rule.name.first}} {{rule.name.last}}
+                    {{ rule.name.first.charAt(0).toUpperCase() + rule.name.first.slice(1) }} {{rule.name.last.charAt(0).toUpperCase() + rule.name.last.slice(1)
+                    }}
                 </li>
             </ul>
-            <hr />
+            <hr/>
             <input type='button' value='Click Me' ng-click='alertClick()' />
             <br/>
             <br /> Add rule:
             <input type='text' ng-model='newRule' />
             <a href='#' class='btn btn-default' ng-click='addRule()'>ADD</a>
-        </div>
+        </div> -->
         <div ng-view></div>
     </div>
 </body>

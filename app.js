@@ -27,20 +27,29 @@ myApp.service('nameService', function () {
 
 myApp.controller('firstController', ['$scope', '$log', 'nameService', function ($scope, $log, nameService) {
 
-    $scope.name = 'TOMEK'
-    $scope.name = nameService.name
-    $scope.$watch('name', function () {
-        nameService.name = $scope.name
-    })
+    // $scope.name = 'TOMEK'
+    // $scope.name = nameService.name
+    // $scope.$watch('name', function () {
+    //     nameService.name = $scope.name
+    // })
 }])
+
+myApp.directive('searchResult', function(){
+    return {
+        restrict: 'AEC', //A to show directive as attribute only, E to show directive as element only, AE both /default setting/ , C to show directive as class
+        template: '<a href="#" class="list-group-item"><h4 class="list-group-item-heading">Doe, John</h4><p class="list-group-item-text">555 Main St., New York</p></a>',
+        replace: true
+    }
+
+})
 
 myApp.controller('secondController', ['$scope', '$log', '$routeParams', 'nameService', function ($scope, $log, $routeParams, nameService) {
 
-    $scope.num = $routeParams.num || 'not defined'
-    $scope.name = nameService.name
-    $scope.$watch('name', function () {
-        nameService.name = $scope.name
-    })
+    // $scope.num = $routeParams.num || 'not defined'
+    // $scope.name = nameService.name
+    // $scope.$watch('name', function () {
+    //     nameService.name = $scope.name
+    // })
 }])
 
 myApp.controller('mainController', ['$scope', '$filter', '$timeout', '$http', '$log', 'nameService', function ($scope, $filter, $timeout, $http, $log, nameService) {
