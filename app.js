@@ -27,7 +27,7 @@ myApp.service('nameService', function () {
 
 myApp.controller('firstController', ['$scope', '$log', 'nameService', function ($scope, $log, nameService) {
 
-    $scope.people = 
+    $scope.people =
         [
             {
                 name: 'John Doe',
@@ -51,7 +51,7 @@ myApp.controller('firstController', ['$scope', '$log', 'nameService', function (
                 zip: '3333'
             }
         ]
-    
+
 
     $scope.formattedAddress = function (person) {
 
@@ -69,6 +69,16 @@ myApp.directive('searchResult', function () {
         scope: {
             personObject: '=',
             formattedAddressFunction: '&'
+        },
+        compile: function (elem, attrs) {
+
+            return {
+                post: function (scope, elements, attrs) {
+                    if (scope.personObject.name == 'Jane Doe') {
+                        elements.removeAttr('class')
+                    }
+                }
+            }
         }
     }
 })
