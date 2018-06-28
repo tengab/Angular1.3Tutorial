@@ -70,14 +70,9 @@ myApp.directive('searchResult', function () {
             personObject: '=',
             formattedAddressFunction: '&'
         },
-        compile: function (elem, attrs) {
-
-            return {
-                post: function (scope, elements, attrs) {
-                    if (scope.personObject.name == 'Jane Doe') {
-                        elements.removeAttr('class')
-                    }
-                }
+        link: function (scope, elements, attrs) {
+            if (scope.personObject.name == 'Jane Doe') {
+                elements.removeAttr('class')
             }
         }
     }
