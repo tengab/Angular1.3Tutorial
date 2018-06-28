@@ -37,7 +37,7 @@ myApp.controller('firstController', ['$scope', '$log', 'nameService', function (
 myApp.directive('searchResult', function(){
     return {
         restrict: 'AEC', //A to show directive as attribute only, E to show directive as element only, AE both /default setting/ , C to show directive as class
-        template: '<a href="#" class="list-group-item"><h4 class="list-group-item-heading">Doe, John</h4><p class="list-group-item-text">555 Main St., New York</p></a>',
+        templateUrl: 'directives/searchresult.html',
         replace: true
     }
 
